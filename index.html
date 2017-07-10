@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!-- 
+    hizhongxu@gmail.com
+    https://github.com/ZhongxuYang
+ -->
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no">
+<title></title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+    <script>
+        <!--图片预加载-->
+//        document.addEventListener('touchstart',function(ev){
+//            ev.preventDefault();
+//        });
+        function setload(){
+            var data = [];//用来存放所有的图片
+            var load = document.getElementById('bg');
+            var logoText = document.getElementById('load_text');
+            var box = document.getElementById("box");
+
+            for(var attr in imgData){
+                //for in循环数组键值对,把所有图片放在一个数组里
+                data = data.concat(imgData[attr]);
+            }
+            var num = 0;//计算加载进来图片个数
+            var len = data.length;
+            for(var i=0;i<len;i++){
+                var img = new Image();
+                img.src = data[i];//把每张图片都从服务器下载到本地
+                img.onload = function(){
+                    num++;
+                    var per = Math.floor(num/len*100);
+                    logoText.innerHTML = '正在回到6月11日 ' + per + '%';
+                    if( num == len ){
+                        MTween({
+                            el: load,
+                            target: {opacity:0},
+                            time: 1000,
+                            type: 'easeOut',
+                            callBack: function(){
+                                document.body.removeChild(load);
+                                box.className = "";
+                            }
+                        });
+                    }
+                }
+            }
+        }
+//        window.onload = function(){
+//            var box = document.getElementById("box");
+//            var figer = document.getElementById("figer");
+//            var text = document.getElementById("load_text");
+//            var logo = document.getElementById("loader_transform");
+//
+//            figer.addEventListener("touchstart",function(){
+//                box.className = "";
+//                figer.className = "hide";
+//                logo.className = "loader";
+//                text.className = "";
+//                setload();
+//            })
+//        }
+    </script>
+</head>
+<body>
+    <div id="bg">
+        <canvas id="canvas"></canvas>
+        <div id="loader">
+            <div id="loader_box">
+                <div id="loader_transform" class="loader"></div>
+                <!--<div id="figer"></div>-->
+                <!--<div id="load_text" class="hide">正在回到6月11日 0%</div>-->
+                <div id="load_text">正在回到6月11日 0%</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="box" class="hide">
+        <div id="content">
+            <div id="part1">
+                <img src="img/part/part-1.png">
+            </div>
+            <div id="part2">
+                <img src="img/part/part-2-1.png">
+                <img src="img/part/part-2-2.png" style="opacity: 0">
+                <img src="img/logo/figer.png">
+            </div>
+        </div>
+
+        <div id="pics">
+            <div class="">
+                <img src="img/pic/1.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/2.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/3.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/4.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/5.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/6.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/7.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/8.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/9.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/10.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/11.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/12.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/13.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/14.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/15.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/16.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/17.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/18.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/19.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/20.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/21.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/22.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/23.png">
+            </div>
+            <div class="translate">
+                <img src="img/pic/24.png">
+            </div>
+        </div>
+    </div>
+    
+    <div id="footer">
+        <img src="img/part/footer.png">
+    </div>
+
+<script src="js/imgData.js" charset="utf-8"></script>
+<script src="js/m.Tween.js" charset="utf-8"></script>
+<script src="js/index.js" charset="utf-8"></script>
+
+</body>
+</html>
